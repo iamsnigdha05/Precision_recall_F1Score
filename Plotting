@@ -1,0 +1,25 @@
+import matplotlib.pyplot as plt
+
+# Metrics
+precision = precision_score(all_labels_np, all_preds_np)
+recall = recall_score(all_labels_np, all_preds_np)
+f1 = f1_score(all_labels_np, all_preds_np)
+
+# Plotting
+metrics = ['Precision', 'Recall', 'F1 Score']
+values = [precision, recall, f1]
+
+plt.figure(figsize=(6, 4))
+bars = plt.bar(metrics, values, color=['skyblue', 'lightgreen', 'salmon'])
+plt.ylim(0, 1)
+plt.title('Evaluation Metrics')
+plt.ylabel('Score')
+
+# Add value labels on top of bars
+for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2.0, yval + 0.02, f"{yval:.2f}", ha='center', va='bottom')
+
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+plt.tight_layout()
+plt.show()
