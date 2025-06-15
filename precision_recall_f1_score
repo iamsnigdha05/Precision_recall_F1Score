@@ -1,0 +1,18 @@
+from sklearn.metrics import classification_report, precision_score, recall_score, f1_score
+# Convert predictions and labels to NumPy arrays
+import numpy as np
+all_preds_np = np.array(all_preds)
+all_labels_np = np.array(all_labels)
+
+# F1, Precision, Recall
+precision = precision_score(all_labels_np, all_preds_np)
+recall = recall_score(all_labels_np, all_preds_np)
+f1 = f1_score(all_labels_np, all_preds_np)
+
+print(f"\nPrecision: {precision:.4f}")
+print(f"Recall:    {recall:.4f}")
+print(f"F1 Score:  {f1:.4f}")
+
+# Classification Report
+print("\nClassification Report:")
+print(classification_report(all_labels_np, all_preds_np, target_names=["Real", "Fake"]))
